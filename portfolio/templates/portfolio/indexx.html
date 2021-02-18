@@ -1,0 +1,9 @@
+{% for project in projects.all %}
+
+<!-- <img src="{{ project.image.url }}" alt="img"> -->
+<img class="card-img-top" src="{{course.image.url}}" alt="image">
+{{ project.description }}
+{{ project.link }}
+<br>
+
+{% endfor %}
