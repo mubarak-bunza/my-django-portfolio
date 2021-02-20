@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '1w(qw%o5*#(!i$yjtb8*ej)@1bu(tknrsez4qja(kbdt$fguep'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -81,14 +81,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 print(DEBUG)
 if not DEBUG:
+    # print(dj_database_url.parse(config('DATABASE_URL'), conn_max_age=600))
     DATABASES = {
-        # 'default': {
-        #     dj_database_url.parse(config('DATABASE_URL'), conn_max_age=600),
-        #     'ENGINE': 'django.db.backends.postgresql',
-        # }
-        'dafault': dj_database_url.config(
-            dafault=config('DATABASE_URL')
-        )
+        'default': {
+            **dj_database_url.parse(config('DATABASE_URL'), conn_max_age=600),
+            'ENGINE': 'django.db.backends.postgresql',
+        }
+        # 'dafault': dj_database_url.config(
+        #     dafault=config('DATABASE_URL')
+        # )
     }
 else:
     DATABASES = {
