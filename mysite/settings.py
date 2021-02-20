@@ -28,7 +28,7 @@ SECRET_KEY = '1w(qw%o5*#(!i$yjtb8*ej)@1bu(tknrsez4qja(kbdt$fguep'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['mab-portfolio.herokuapp.com/']
 
 
 # Application definition
